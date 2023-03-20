@@ -101,14 +101,23 @@ if (isset($_GET['parking'])) {
 
 </head>
 <body>
+<body>
 	<div class="container">
 		<h1 class="text-center my-4">Elenco Hotel</h1>
 		<form class="mb-4">
-			<div class="form-check">
-				<input class="form-check-input" type="checkbox" name="parking" id="parking" <?php if (isset($_GET['parking'])) { echo ($_GET['parking'] ? 'checked' : ''); } ?>>
-				<label class="form-check-label" for="parking">
-					Disponibilità parcheggio
-				</label>
+			<div class="form-row">
+				<div class="col-md-4 mb-3">
+					<label for="parking">Disponibilità parcheggio</label>
+					<select class="custom-select" name="parking" id="parking">
+						<option value="">Tutti</option>
+						<option value="1" <?php if (isset($_GET['parking']) && $_GET['parking'] == '1') { echo 'selected'; } ?>>Si</option>
+						<option value="0" <?php if (isset($_GET['parking']) && $_GET['parking'] == '0') { echo 'selected'; } ?>>No</option>
+					</select>
+				</div>
+				<div class="col-md-4 mb-3">
+					<label for="vote">Voto minimo</label>
+					<input type="number" class="form-control" name="vote" id="vote" value="<?php echo (isset($_GET['vote']) ? $_GET['vote'] : ''); ?>">
+				</div>
 			</div>
 			<button type="submit" class="btn btn-primary">Filtra</button>
 		</form>
