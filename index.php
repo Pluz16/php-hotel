@@ -99,24 +99,40 @@ if (isset($_GET['parking'])) {
 
 </head>
 <body>
-	<h1>Elenco Hotel</h1>
-	<table>
-		<tr>
-			<th>Nome</th>
-			<th>Descrizione</th>
-			<th>Parcheggio</th>
-			<th>Voto</th>
-			<th>Distanza dal centro</th>
-		</tr>
-		<?php foreach ($hotels as $hotel) { ?>
-		<tr>
-			<td><?php echo $hotel['name']; ?></td>
-			<td><?php echo $hotel['description']; ?></td>
-			<td><?php echo ($hotel['parking'] ? 'Si' : 'No'); ?></td>
-			<td><?php echo $hotel['vote']; ?></td>
-			<td><?php echo $hotel['distance_to_center'] . ' km'; ?></td>
-		</tr>
-		<?php } ?>
-	</table>
+	<div class="container">
+		<h1 class="text-center my-4">Elenco Hotel</h1>
+		<form class="mb-4">
+			<div class="form-check">
+				<input class="form-check-input" type="checkbox" name="parking" id="parking" <?php if (isset($_GET['parking'])) { echo ($_GET['parking'] ? 'checked' : ''); } ?>>
+				<label class="form-check-label" for="parking">
+					Disponibilità parcheggio
+				</label>
+			</div>
+			<button type="submit" class="btn btn-primary">Filtra</button>
+		</form>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Descrizione</th>
+					<th>Parcheggio</th>
+					<th>Voto</th>
+					<th>Distanza dal centro</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach ($filtered_hotels as $hotel) { ?>
+				<tr>
+					<td><?php echo $hotel['name']; ?></td>
+					<td><?php echo $hotel['description']; ?></td>
+					<td><?php echo ($hotel['parking'] ? 'Si' : 'No'); ?></td>
+					<td><?php echo $hotel['vote']; ?></td>
+					<td><?php echo $hotel['distance_to_center'] . ' km'; ?></td>
+				</tr>
+				<?php } ?>
+			</tbody>
+		</table>
+	</div>
 </body>
+
 </html>
