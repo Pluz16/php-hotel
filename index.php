@@ -44,9 +44,11 @@ $filtered_hotels = [];
 
 if (isset($_GET['parking'])) {
 	$filtered_parking = filter_input(INPUT_GET, 'parking', FILTER_VALIDATE_BOOLEAN);
-	
+	$filtered_vote = filter_input(INPUT_GET, 'vote', FILTER_VALIDATE_INT);
+
 	foreach ($hotels as $hotel) {
-		if ($hotel['parking'] == $filtered_parking) {
+		if ((!isset($_GET['parking']) || $hotel['parking'] == $filtered_parking) &&
+			(!isset($_GET['vote']) || $hotel['vote'] >= $filtered_vote)) {
 			$filtered_hotels[] = $hotel;
 		}
 	}
