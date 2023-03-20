@@ -40,6 +40,20 @@ $hotels = [
 
 ];
 
+$filtered_hotels = [];
+
+if (isset($_GET['parking'])) {
+	$filtered_parking = filter_input(INPUT_GET, 'parking', FILTER_VALIDATE_BOOLEAN);
+	
+	foreach ($hotels as $hotel) {
+		if ($hotel['parking'] == $filtered_parking) {
+			$filtered_hotels[] = $hotel;
+		}
+	}
+} else {
+	$filtered_hotels = $hotels;
+}
+
 ?>
 
 <!DOCTYPE html>
