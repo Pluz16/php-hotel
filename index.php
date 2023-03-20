@@ -46,6 +46,43 @@ $hotels = [
 <html>
 <head>
 	<title>Hotel List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Stile bootstrap -->
+    <style>
+		body {
+			background-color: #C9E6F7;
+		}
+
+		h1 {
+			font-size: 36px;
+			font-weight: bold;
+		}
+
+		table {
+			margin-top: 20px;
+		}
+
+		table th, table td {
+			text-align: center;
+			padding: 10px;
+		}
+
+		table th {
+			background-color: #007BFF;
+			color: #fff;
+		}
+
+		table tr:nth-child(even) {
+			background-color: #F0F0F0;
+		}
+
+		table tr:hover {
+			background-color: #E0E0E0;
+			cursor: pointer;
+		}
+	</style>
+
 </head>
 <body>
 	<h1>Elenco Hotel</h1>
